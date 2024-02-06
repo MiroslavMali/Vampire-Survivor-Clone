@@ -30,8 +30,6 @@ class Level:
         for enemy in hits:
             self.player.take_damage(enemy.damage)
 
-
-
     def run(self, events):
         self.handle_events(events)
 

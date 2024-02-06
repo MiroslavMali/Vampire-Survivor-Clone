@@ -1,7 +1,6 @@
 import pygame, sys
 from settings import *
 from button import Button
-from enemy_manager import EnemyManager
 
 class MainMenu:
     def __init__(self, display, game_state_manager):
@@ -12,18 +11,23 @@ class MainMenu:
 
         # Button specifications
         button_width, button_height = 200, 50
-        button_x = DISPLAY_WIDTH - button_width - 30  # Right align, 30px from edge
-        start_button_y = DISPLAY_HEIGHT // 2 - button_height - 10  # Above center
-        quit_button_y = DISPLAY_HEIGHT // 2 + 10  # Below center
+        button_x = DISPLAY_WIDTH - button_width - 300  # Right align, 30px from edge
+        start_button_y = DISPLAY_HEIGHT // 2 - button_height - 60  # Above center
+        settings_button_y = DISPLAY_HEIGHT // 2 - button_height + 10
+        quit_button_y = DISPLAY_HEIGHT // 2 + 30  # Below center
 
         # Creating buttons
         self.buttons = [
             Button(button_x, start_button_y, button_width, button_height, (0, 255, 0), "Start", (255, 255, 255), self.start_game),
+            Button(button_x, settings_button_y, button_width, button_height, (0, 0, 255), "Settings", (255, 255, 255), self.settings),
             Button(button_x, quit_button_y, button_width, button_height, (255, 0, 0), "Quit", (255, 255, 255), self.quit_game)
         ]
 
     def start_game(self):
         self.game_state_manager.set_state('level')
+
+    def settings(self):
+        print("settings")
 
     def quit_game(self):
         pygame.quit()
