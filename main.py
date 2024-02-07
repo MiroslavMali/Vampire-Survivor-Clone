@@ -22,9 +22,6 @@ class Main:
                 pygame.quit()
                 sys.exit()
 
-    def draw(self):
-        self.display_surface.fill('black')
-
     def run(self):
         while True:
             # System
@@ -33,6 +30,11 @@ class Main:
             # Event handle
             events = pygame.event.get()
             self.handle_events(events)
+
+            # Check for reset request before state handle
+            if self.game_state_manager.is_reset_requested():
+                self.level.reset()  # Assuming Level has a reset method
+                self.game_state_manager.clear_reset_request()
 
             # State handle
             self.states[self.game_state_manager.get_state()].run(events)

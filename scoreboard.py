@@ -8,8 +8,11 @@ class Scoreboard:
         self.font = pygame.font.SysFont(None, FONT_SIZE)
         self.time_delay = 1000
         self.score_increase = 1
-        self.font = pygame.font.SysFont(None, FONT_SIZE)
         self.clock = clock
+
+    def reset(self):
+        self.current_score = 0
+        self.time_elapsed = pygame.time.get_ticks()
 
     def update(self):
         current_time = pygame.time.get_ticks()

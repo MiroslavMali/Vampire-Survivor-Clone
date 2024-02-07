@@ -46,6 +46,10 @@ class Player(pygame.sprite.Sprite):
     def draw(self):
         pygame.draw.rect(self.display, 'red', self.rect)
 
+    def reset(self):
+        self.rect.topleft = DISPLAY_CENTER
+        self.current_health = self.max_health
+
     def update(self):
         self.move()
         self.draw()

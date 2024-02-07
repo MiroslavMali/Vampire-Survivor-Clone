@@ -18,8 +18,10 @@ class EnemyManager:
             self.enemy_list.add(Enemy(x, y))
             self.last_spawn_time = current_time
 
-    def empty_enemy_list(self):
+    def reset(self):
         self.enemy_list.empty()
+        self.last_spawn_time = pygame.time.get_ticks()
+        self.spawn_delay = 1000
 
     def draw(self, display):
         self.enemy_list.draw(display)

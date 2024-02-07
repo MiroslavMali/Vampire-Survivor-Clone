@@ -24,7 +24,7 @@ class MainMenu:
         ]
 
     def start_game(self):
-        self.game_state_manager.set_state('level')
+        self.game_state_manager.set_state('reset_level')
 
     def settings(self):
         print("settings")
