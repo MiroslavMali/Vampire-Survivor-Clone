@@ -5,9 +5,14 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, display):
         super().__init__()
         self.display = display
-        self.image = pygame.Surface((20, 20))
-        self.image.fill('red')
-        self.rect = self.image.get_rect(topleft=DISPLAY_CENTER)
+        # self.image = pygame.Surface((20, 20))
+        # self.image.fill('red')
+        # self.rect = self.image.get_rect(topleft=DISPLAY_CENTER)
+
+        self.sprite_sheet = pygame.image.load('Knight_Idle.png')
+        sprite_rect = pygame.Rect(0, 0, 64, 64)
+        self.image = self.sprite_sheet.subsurface(sprite_rect)
+        self.rect = self.image.get_rect(center=DISPLAY_CENTER)
 
         self.is_facing_right = True
         self.is_attacking = False
@@ -44,7 +49,7 @@ class Player(pygame.sprite.Sprite):
         return self.rect.topleft
 
     def draw(self):
-        pygame.draw.rect(self.display, 'red', self.rect)
+        self.display.blit(self.image, self.rect)
 
     def reset(self):
         self.rect.topleft = DISPLAY_CENTER

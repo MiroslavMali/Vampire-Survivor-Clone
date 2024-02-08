@@ -1,4 +1,4 @@
-import pygame, random
+import pygame
 from settings import *
 from enemy import Enemy
 
