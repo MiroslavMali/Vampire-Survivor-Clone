@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Add Level Reset and State Management Update&#10;&#10;- Implemented level reset functionality via GameStateManager&#10;- Updated Main Menu interaction for game restarts">
-      <change afterPath="$PROJECT_DIR$/Knight_Idle.png" afterDir="false" />
+    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Add Player Sprite">
+      <change afterPath="$PROJECT_DIR$/2_anims.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4 anims.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/animation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/emerald.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enemy_drop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/red_potion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/single_row_anim.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/single_row_test.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slash_anim.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slash_attack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_state_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_state_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_bar.py" beforeDir="false" afterPath="$PROJECT_DIR$/health_bar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/level.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +69,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -68,7 +77,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -151,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707282081403</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add Player Sprite">
+      <created>1707366742437</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707366742437</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +186,7 @@
     <MESSAGE value="- Code cleaned up&#10;- Removed redundant instances in main.py&#10;- Added settings button in main.py" />
     <MESSAGE value="- Code clean up&#10;- Remove redundant instances in main&#10;- Added settings button in main" />
     <MESSAGE value="Add Level Reset and State Management Update&#10;&#10;- Implemented level reset functionality via GameStateManager&#10;- Updated Main Menu interaction for game restarts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Level Reset and State Management Update&#10;&#10;- Implemented level reset functionality via GameStateManager&#10;- Updated Main Menu interaction for game restarts" />
+    <MESSAGE value="Add Player Sprite" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Player Sprite" />
   </component>
 </project>
