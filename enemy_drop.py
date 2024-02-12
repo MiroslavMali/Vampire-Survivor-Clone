@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class EnemyDrop(pygame.sprite.Sprite):
     def __init__(self, display, pos, drop_type, scale=1):
@@ -15,7 +16,7 @@ class EnemyDrop(pygame.sprite.Sprite):
         if drop_type == 'health':
             image = pygame.image.load('red_potion.png').convert_alpha()
         elif drop_type == 'exp':
-            image = pygame.image.load('exp_drop.png').convert_alpha()
+            image = pygame.image.load('emerald.png').convert_alpha()
         elif drop_type == 'money':
             image = pygame.image.load('money_drop.png').convert_alpha()
         else:
@@ -29,6 +30,11 @@ class EnemyDrop(pygame.sprite.Sprite):
             image = pygame.transform.scale(image, (int(image_width), int(image_height)))
 
         return image
+
+    @staticmethod
+    def determine_drop_type():
+        drop_types = ['health', 'exp', 'money']
+        return drop_types[1]
 
     def update(self):
         # If you need to update the drop's state, do it here

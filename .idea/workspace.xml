@@ -4,22 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Add Player Sprite">
-      <change afterPath="$PROJECT_DIR$/2_anims.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4 anims.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emerald.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemy_drop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/red_potion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/single_row_anim.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/single_row_test.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slash_anim.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slash_attack.py" afterDir="false" />
+    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic">
+      <change afterPath="$PROJECT_DIR$/Player_Sprite_Sheet2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xp_bar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/health_bar.py" beforeDir="false" afterPath="$PROJECT_DIR$/health_bar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Knight_Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy_drop.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_drop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/level.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scoreboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707366742437</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic">
+      <created>1707675884719</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707675884719</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +187,7 @@
     <MESSAGE value="- Code clean up&#10;- Remove redundant instances in main&#10;- Added settings button in main" />
     <MESSAGE value="Add Level Reset and State Management Update&#10;&#10;- Implemented level reset functionality via GameStateManager&#10;- Updated Main Menu interaction for game restarts" />
     <MESSAGE value="Add Player Sprite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Player Sprite" />
+    <MESSAGE value="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic" />
   </component>
 </project>

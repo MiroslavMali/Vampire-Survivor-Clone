@@ -1,4 +1,5 @@
 import pygame
+
 from player import Player
 from enemy_manager import EnemyManager
 from scoreboard import Scoreboard
@@ -6,6 +7,7 @@ from health_bar import HealthBar
 from settings import *
 from pause_menu import PauseMenu
 from enemy_drop import EnemyDrop
+from xp_bar import XPBar
 
 class Level:
     def __init__(self, display, game_state_manager, clock):
@@ -17,6 +19,7 @@ class Level:
         self.health_bar = HealthBar(self.display, self.player)
         self.pause_menu = PauseMenu(self.display, game_state_manager)
         self.drops = pygame.sprite.Group()
+        self.xp_bar = XPBar(self.display, self.player)
 
     def handle_events(self, events):
         for event in events:
@@ -38,26 +41,18 @@ class Level:
             enemies_hit = pygame.sprite.spritecollide(self.player.slash_attack, self.enemy_manager.enemy_list, dokill=True)
             for enemy in enemies_hit:
                 self.scoreboard.current_score += 10  # Example of incrementing the score
-                drop_type = 'health'  # Or determine the drop type based on some logic
+                drop_type = EnemyDrop.determine_drop_type()
                 drop = EnemyDrop(self.display, enemy.rect.center, drop_type, 2)
                 self.drops.add(drop)
 
     def check_drop_collisions(self):
-        drops_hit = pygame.sprite.spritecollide(self.player, self.drops, dokill=True, collided=pygame.sprite.collide_rect_ratio(0.8))
+        drops_hit = pygame.sprite.spritecollide(self.player, self.drops, dokill=True, collided=pygame.sprite.collide_rect_ratio(0.5))
         for drop in drops_hit:
             if drop.drop_type == 'health':
                 self.player.increase_health(10)
             elif drop.drop_type == 'exp':
-                self.player.gain_exp(100)
+                self.player.increase_xp(15)
             # Handle other drop types as needed
-
-    def collect_drop(self, drop):
-        # Handle the effect of the drop
-        if drop.drop_type == 'health':
-            self.player.increase_health(10)  # Example method to increase player health
-        elif drop.drop_type == 'exp':
-            self.player.gain_exp(100)  # Example method to increase player XP
-        # Add more conditions as needed
 
     def reset(self):
         self.player.reset()
@@ -78,6 +73,7 @@ class Level:
             self.drops.draw(self.display)
             self.scoreboard.update()
             self.health_bar.update()
+            self.xp_bar.update(self.player.current_xp, self.player.xp_to_next_level)
         else:
             self.pause_menu.update(events)
             self.pause_menu.draw()

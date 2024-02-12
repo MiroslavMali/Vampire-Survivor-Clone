@@ -21,9 +21,9 @@ class Scoreboard:
             self.time_elapsed += self.time_delay
 
         self.score_surface = self.font.render(f"Score: {self.current_score}", False, 'white')
-        self.fps_surface = self.font.render(f"Fps: {self.clock}", False, 'white')
+        #self.fps_surface = self.font.render(f"Fps: {self.clock}", False, 'white')
         self.draw_score()
 
     def draw_score(self):
-        self.display.blit(self.score_surface, (20, 20))
-        self.display.blit(self.fps_surface, (20, 40))
+        self.display.blit(self.score_surface, (20, 40))
+        #self.display.blit(self.fps_surface, (20, 40))
