@@ -57,6 +57,6 @@ class SlashAttack(pygame.sprite.Sprite):
                 else:
                     self.image = self.frames[self.current_frame]
 
-    def draw(self, surface):
+    def draw(self, surface, offset):
         if self.active:
-            surface.blit(self.image, self.rect)
+            surface.blit(self.image, self.rect.topleft - pygame.math.Vector2(offset))

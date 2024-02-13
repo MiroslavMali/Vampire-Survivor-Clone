@@ -40,5 +40,6 @@ class EnemyDrop(pygame.sprite.Sprite):
         # If you need to update the drop's state, do it here
         pass
 
-    def draw(self):
-        self.display.blit(self.image, self.rect.topleft)
+    def draw(self, surface, offset):
+        offset_pos = self.rect.topleft - offset
+        surface.blit(self.image, offset_pos)

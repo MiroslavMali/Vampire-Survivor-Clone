@@ -1,5 +1,6 @@
 from button import Button
 from settings import *
+import pygame
 
 class PauseMenu:
     def __init__(self, display, game_state_manager):

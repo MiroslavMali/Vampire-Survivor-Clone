@@ -1,6 +1,6 @@
 import pygame
-from settings import *
 from enemy import Enemy
+import random
 
 class EnemyManager:
     def __init__(self, display, sprite_width, sprite_height):
@@ -11,10 +11,27 @@ class EnemyManager:
         self.last_spawn_time = pygame.time.get_ticks()
         self.spawn_delay = 1000
 
-    def spawn_enemy(self):
+    def get_random_XY(self, camera_offset):
+        spawn_margin = 50  # Margin outside the camera view where enemies can spawn
+        camera_offset_x, camera_offset_y = camera_offset
+
+        spawn_side = random.choice(["horizontal", "vertical"])
+        if spawn_side == "horizontal":
+            y = random.randint(camera_offset_y - spawn_margin,
+                               camera_offset_y + self.display.get_height() + spawn_margin)
+            x = random.choice([camera_offset_x - self.sprite_width - spawn_margin,
+                               camera_offset_x + self.display.get_width() + spawn_margin])
+        else:
+            x = random.randint(camera_offset_x - spawn_margin,
+                               camera_offset_x + self.display.get_width() + spawn_margin)
+            y = random.choice([camera_offset_y - self.sprite_height - spawn_margin,
+                               camera_offset_y + self.display.get_height() + spawn_margin])
+        return x, y
+
+    def spawn_enemy(self, camera_offset):
         current_time = pygame.time.get_ticks()
         if current_time - self.last_spawn_time >= self.spawn_delay:
-            x, y = get_random_XY(self)
+            x, y = self.get_random_XY(camera_offset)
             self.enemy_list.add(Enemy(x, y))
             self.last_spawn_time = current_time
 
@@ -23,10 +40,12 @@ class EnemyManager:
         self.last_spawn_time = pygame.time.get_ticks()
         self.spawn_delay = 1000
 
-    def draw(self, display):
-        self.enemy_list.draw(display)
+    def draw(self, display, offset):
+        for enemy in self.enemy_list:
+            enemy.draw(display, offset)
 
-    def update(self, player_pos):
-        self.spawn_enemy()
-        self.enemy_list.update(player_pos)
-        self.draw(self.display)
+    def update(self, player_pos, offset):
+        self.spawn_enemy(offset)
+        for enemy in self.enemy_list:
+            enemy.update(player_pos)
+        self.draw(self.display, offset)

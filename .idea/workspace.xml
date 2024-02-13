@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic">
-      <change afterPath="$PROJECT_DIR$/Player_Sprite_Sheet2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xp_bar.py" afterDir="false" />
+    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="- Add dynamic XP bar and leveling system&#10;&#10;- Add XP bar across the top screen with visual feedback on experience gain&#10;- Introduce level-up functionality with increasing XP requirements and overflow handling&#10;- Enhance enemy drops to award XP, supporting player progression&#10;- Improve pickup collision detection for smoother gameplay experience&#10;- Refactor update and draw methods for efficiency and clarity">
+      <change afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Knight_Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animation.py" beforeDir="false" afterPath="$PROJECT_DIR$/animation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemy_drop.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_drop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_bar.py" beforeDir="false" afterPath="$PROJECT_DIR$/health_bar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pause_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/pause_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scoreboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slash_attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/slash_attack.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -167,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707675884719</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- Add dynamic XP bar and leveling system&#10;&#10;- Add XP bar across the top screen with visual feedback on experience gain&#10;- Introduce level-up functionality with increasing XP requirements and overflow handling&#10;- Enhance enemy drops to award XP, supporting player progression&#10;- Improve pickup collision detection for smoother gameplay experience&#10;- Refactor update and draw methods for efficiency and clarity">
+      <created>1707702973525</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707702973525</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +200,7 @@
     <MESSAGE value="Add Level Reset and State Management Update&#10;&#10;- Implemented level reset functionality via GameStateManager&#10;- Updated Main Menu interaction for game restarts" />
     <MESSAGE value="Add Player Sprite" />
     <MESSAGE value="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic" />
+    <MESSAGE value="- Add dynamic XP bar and leveling system&#10;&#10;- Add XP bar across the top screen with visual feedback on experience gain&#10;- Introduce level-up functionality with increasing XP requirements and overflow handling&#10;- Enhance enemy drops to award XP, supporting player progression&#10;- Improve pickup collision detection for smoother gameplay experience&#10;- Refactor update and draw methods for efficiency and clarity" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add dynamic XP bar and leveling system&#10;&#10;- Add XP bar across the top screen with visual feedback on experience gain&#10;- Introduce level-up functionality with increasing XP requirements and overflow handling&#10;- Enhance enemy drops to award XP, supporting player progression&#10;- Improve pickup collision detection for smoother gameplay experience&#10;- Refactor update and draw methods for efficiency and clarity" />
   </component>
 </project>

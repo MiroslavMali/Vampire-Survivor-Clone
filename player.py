@@ -26,7 +26,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=DISPLAY_CENTER)
 
         self.last_slash = 0
-        self.slash_cooldown = 1500
+        self.slash_cooldown = 1250
 
         # Player stats
         self.is_alive = True
@@ -118,6 +118,7 @@ class Player(pygame.sprite.Sprite):
 
         self.animation.update()
         self.image = self.animation.get_current_frame()
+        if not self.facing_right:
+            self.image = pygame.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect(center=self.rect.center)
         self.move()
-        self.draw()
