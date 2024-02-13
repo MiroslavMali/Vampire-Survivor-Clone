@@ -22,6 +22,7 @@ class Level:
         self.pause_menu = PauseMenu(self.display, game_state_manager)
         self.drops = pygame.sprite.Group()
         self.xp_bar = XPBar(self.display, self.player)
+        self.clock = clock
 
 
     def handle_events(self, events):
@@ -34,10 +35,11 @@ class Level:
                 pass
 
     def check_collisions(self):
-        """Handle player / enemy collision"""
-        hits = pygame.sprite.spritecollide(self.player, self.enemy_manager.enemy_list, True, collided=pygame.sprite.collide_rect_ratio(0.6))
+        """Handle player/enemy collisions and manage enemy attacks based on cooldown."""
+        current_time = pygame.time.get_ticks()  # Get the current game time
+        hits = pygame.sprite.spritecollide(self.player, self.enemy_manager.enemy_list, False, collided=pygame.sprite.collide_rect_ratio(0.6))
         for enemy in hits:
-            self.player.take_damage(enemy.damage)
+            enemy.attack(self.player, current_time)
 
     def check_slash_collisions(self):
         if self.player.slash_attack.active:
@@ -64,32 +66,25 @@ class Level:
 
     def run(self, events):
         self.handle_events(events)
+        current_time = pygame.time.get_ticks()
 
         if not self.pause_menu.is_paused:
             self.display.fill('black')
-
-            # Update camera and player
             self.camera.update()
             self.player.update()
 
-            # Draw everything with the camera's offset
             offset = (self.camera.offset_x, self.camera.offset_y)
 
-            # Draw the player with the camera's offset
             self.display.blit(self.player.image, self.player.rect.topleft - pygame.math.Vector2(offset))
-
-            # Update and draw enemies with the camera's offset
-            self.enemy_manager.update(self.player.get_pos(), (self.camera.offset_x, self.camera.offset_y))
+            self.enemy_manager.update(self.player.rect.center, (self.camera.offset_x, self.camera.offset_y), current_time)
 
             for drop in self.drops:
-                drop.draw(self.display, pygame.math.Vector2(self.camera.offset_x, self.camera.offset_y))
+                drop.draw(self.display, offset)
 
-            # If the player's slash attack is active, update and draw it with the camera's offset
             if self.player.slash_attack.active:
                 self.player.slash_attack.update()
                 self.player.slash_attack.draw(self.display, offset)
 
-            # Update and draw other entities and UI
             self.check_collisions()
             self.check_slash_collisions()
             self.check_drop_collisions()

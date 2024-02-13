@@ -44,8 +44,8 @@ class EnemyManager:
         for enemy in self.enemy_list:
             enemy.draw(display, offset)
 
-    def update(self, player_pos, offset):
+    def update(self, player_pos, offset, current_time):
         self.spawn_enemy(offset)
         for enemy in self.enemy_list:
-            enemy.update(player_pos)
+            enemy.update(player_pos, current_time)  # Ensure the Enemy class's update method accepts this argument
         self.draw(self.display, offset)

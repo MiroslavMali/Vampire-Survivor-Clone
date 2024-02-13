@@ -41,5 +41,5 @@ class EnemyDrop(pygame.sprite.Sprite):
         pass
 
     def draw(self, surface, offset):
-        offset_pos = self.rect.topleft - offset
+        offset_pos = pygame.math.Vector2(self.rect.topleft) - pygame.math.Vector2(offset)
         surface.blit(self.image, offset_pos)
