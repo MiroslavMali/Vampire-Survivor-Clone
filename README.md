@@ -4,7 +4,7 @@
 
 
 ## Introduction
-One of my most complex projects so far that I'm really proud of. This project is a clone of the popular game "Vampire Survivor." It is developed using Pygame library. The goal is to survive waves of enemies and score as high as possible.
+One of the most complex projects I've made so far, and one I'm really proud of, is this clone of the popular game 'Vampire Survivor.' Developed using the Pygame library, the goal is to survive waves of enemies and achieve the highest possible score.
 
 ## Key Features
 
