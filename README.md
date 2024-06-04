@@ -3,8 +3,8 @@
 ![VampireSurvivorClone-ezgif com-optimize](https://github.com/MiroslavMali/Vampire-Survivor-Clone/assets/68731924/83bee461-d6d3-42a5-9b9c-ba2324e57c28)
 
 
-## Introduction
-One of the most complex projects I've made so far, and one I'm really proud of, is this clone of the popular game 'Vampire Survivor.' Developed using the Pygame library, the goal is to survive waves of enemies and achieve the highest possible score.
+## Project Overview
+This project is a clone of the popular game 'Vampire Survivor,' developed entirely from scratch using Python and the Pygame library. It is one of the most complex and rewarding projects I've undertaken, demonstrating my ability to create a project like this without relying on any frameworks or external packages.
 
 ## Key Features
 
