@@ -9,6 +9,8 @@ class Main:
         pygame.init()
         self.display_surface = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
         self.clock = pygame.time.Clock()
+        self.refresh_rate = pygame.display.get_current_refresh_rate()
+        self.target_fps = self.refresh_rate
 
         # Initialize scenes objects
         self.game_state_manager = GameStateManager('main_menu')
@@ -21,11 +23,13 @@ class Main:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                pass
 
     def run(self):
         while True:
             # System
-            self.clock.tick(60)
+            self.clock.tick(self.target_fps)
 
             # Event handle
             events = pygame.event.get()
@@ -33,7 +37,7 @@ class Main:
 
             # Check for reset request before state handle
             if self.game_state_manager.is_reset_requested():
-                self.level.reset()  # Assuming Level has a reset method
+                self.level.reset()
                 self.game_state_manager.clear_reset_request()
 
             # State handle

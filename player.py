@@ -17,13 +17,14 @@ class Player(pygame.sprite.Sprite):
         }
         self.animation = Animation(self.sprite_sheet, animations, (40, 40), self.scale)
         self.slash_attack = SlashAttack(self, offset_x=75, offset_y=0,
-                                        sprite_sheet_path='path_to_slash_sprite_sheet.png',
+                                        sprite_sheet_path='slash_anim.png',
                                         frame_dimensions=(50, 37), num_frames=4, scale=2)
 
         # Initially set to 'idle' animation
         self.animation.set_animation('idle')
         self.image = self.animation.get_current_frame()
         self.rect = self.image.get_rect(center=DISPLAY_CENTER)
+        self.position = pygame.math.Vector2(self.rect.center)
 
         self.last_slash = 0
         self.slash_cooldown = 1250
@@ -32,44 +33,55 @@ class Player(pygame.sprite.Sprite):
         self.is_alive = True
         self.max_health = 100
         self.current_health = self.max_health
-        self.speed = 2
+        self.speed = 180
+        self.xp_multiplier = 1.0
         self.current_xp = 0
         self.xp_to_next_level = 100
-        self.level_up_percentage = 100
+        self.level_up_percentage = 25  # Reduced from 100 to 25 (25% increase per level)
         self.level = 1
         self.facing_right = True
         self.attacking = False
         self.attack_start_time = 0
         self.jumping = False
 
-    def move(self):
+        # Magnetic field system
+        self.magnetic_radius = 50  # Base radius set equal to first upgrade value
+        self.magnetic_strength = 1.0  # How fast drops are attracted
+        self.magnet_power_up_active = False
+        self.magnet_power_up_duration = 0
+        self.magnet_power_up_timer = 0
+
+    def move(self, dt):
         keys = pygame.key.get_pressed()
-        moving = False
+        # Determine animation based on input
 
         if keys[pygame.K_RIGHT] or keys[pygame.K_LEFT] or keys[pygame.K_UP] or keys[pygame.K_DOWN]:
-            moving = True
             self.animation.set_animation('run')
         else:
             self.animation.set_animation('idle')
 
-        dx, dy = 0, 0
+        dx, dy = 0.0, 0.0
+        pixels = self.speed * dt
         if keys[pygame.K_RIGHT]:
-            dx += self.speed
+            dx += pixels
             self.facing_right = True
         if keys[pygame.K_LEFT]:
-            dx -= self.speed
+            dx -= pixels
             self.facing_right = False
         if keys[pygame.K_UP]:
-            dy -= self.speed
+            dy -= pixels
         if keys[pygame.K_DOWN]:
-            dy += self.speed
+            dy += pixels
 
         diagonal_movement = dx != 0 and dy != 0
         if diagonal_movement:
             dx *= DIAGONAL_SPEED_FACTOR
             dy *= DIAGONAL_SPEED_FACTOR
 
-        self.rect.move_ip(dx, dy)
+        # Update float position then sync rect center
+        self.position.x += dx
+        self.position.y += dy
+        self.rect.center = (round(self.position.x), round(self.position.y))
 
     def take_damage(self, amount):
         self.current_health -= amount
@@ -93,21 +105,22 @@ class Player(pygame.sprite.Sprite):
         # Calculate new XP requirement for the next level
         self.xp_to_next_level = int(self.xp_to_next_level * (1 + self.level_up_percentage / 100.0))
 
-    def draw(self):
-        # Flip the image if facing left
-        if not self.facing_right:
-            flipped_image = pygame.transform.flip(self.image, True, False)
-            self.display.blit(flipped_image, self.rect)
-        else:
-            self.display.blit(self.image, self.rect)
-
-        self.slash_attack.draw(self.display)
+    # def draw(self):
+    #     # Flip the image if facing left
+    #     if not self.facing_right:
+    #         flipped_image = pygame.transform.flip(self.image, True, False)
+    #         self.display.blit(flipped_image, self.rect)
+    #     else:
+    #         self.display.blit(self.image, self.rect)
+    #
+    #     self.slash_attack.draw(self.display)
 
     def reset(self):
-        self.rect.topleft = DISPLAY_CENTER
+        self.rect.center = DISPLAY_CENTER
+        self.position = pygame.math.Vector2(self.rect.center)
         self.current_health = self.max_health
 
-    def update(self):
+    def update(self, dt):
         current_time = pygame.time.get_ticks()
 
         if current_time - self.last_slash > self.slash_cooldown:
@@ -115,10 +128,28 @@ class Player(pygame.sprite.Sprite):
             self.slash_attack.trigger_attack(self.facing_right)
 
         self.slash_attack.update()
-
         self.animation.update()
         self.image = self.animation.get_current_frame()
         if not self.facing_right:
             self.image = pygame.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect(center=self.rect.center)
-        self.move()
+        self.move(dt)
+
+    def get_magnetic_radius(self):
+        """Get current magnetic radius (increased during power-up)."""
+        if self.magnet_power_up_active:
+            return 300  # Large radius during power-up
+        return self.magnetic_radius
+
+    def activate_magnet_power_up(self, duration=5000):
+        """Activate magnet power-up for specified duration (in milliseconds)."""
+        self.magnet_power_up_active = True
+        self.magnet_power_up_duration = duration
+        self.magnet_power_up_timer = pygame.time.get_ticks()
+
+    def update_magnet_power_up(self):
+        """Update magnet power-up timer."""
+        if self.magnet_power_up_active:
+            current_time = pygame.time.get_ticks()
+            if current_time - self.magnet_power_up_timer > self.magnet_power_up_duration:
+                self.magnet_power_up_active = False

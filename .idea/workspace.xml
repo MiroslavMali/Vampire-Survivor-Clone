@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Implement camera system and adjust enemy spawning&#10;&#10;- Add camera class to follow player movement dynamically&#10;- Modify enemy manager to spawn enemies based on camera view&#10;- Fix enemy update method to correctly use player position tuple&#10;- Ensure enemy drops are correctly offset by camera movement&#10;- Resolve issues with player direction and animation updates">
+    <list default="true" id="6d38da3b-150c-4e26-90a8-6b152b78ab7b" name="Changes" comment="Enhance gameplay and introduce versioning&#10;- Implement attack cooldown for enemies to regulate damage intervals.&#10;- Adjust collision detection to keep enemies on screen during attacks.&#10;- Fix entity rendering with camera offset for consistent visuals.&#10;- Resolve various bugs in entity rendering and update logic.&#10;- Update game version to 0.1.1, marking new features and fixes.">
+      <change afterPath="$PROJECT_DIR$/Rat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rock_bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spinning_orb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy_drop.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_drop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemy_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scoreboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,16 +41,16 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/main_menu.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/health_bar.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/level.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/player.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/settings.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/enemy_manager.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/game_state_manager.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/player.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/health_bar.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/button.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main_menu.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scoreboard.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/game_state_manager.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,7 +64,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/KURS 5 Igara/1. Space Shooter" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -178,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707801991980</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Enhance gameplay and introduce versioning&#10;- Implement attack cooldown for enemies to regulate damage intervals.&#10;- Adjust collision detection to keep enemies on screen during attacks.&#10;- Fix entity rendering with camera offset for consistent visuals.&#10;- Resolve various bugs in entity rendering and update logic.&#10;- Update game version to 0.1.1, marking new features and fixes.">
+      <created>1707804475930</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707804475930</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,6 +214,7 @@
     <MESSAGE value="Add Slash Attack and Drops&#10;- Implement auto slash attack with direction&#10;- Add EnemyDrop class for health, exp, money&#10;- Handle drop collection in Level class&#10;- Automate slash attack interval&#10;- Update collision for slash impact&#10;- Fix drop image scaling&#10;- Improve collision detection logic" />
     <MESSAGE value="- Add dynamic XP bar and leveling system&#10;&#10;- Add XP bar across the top screen with visual feedback on experience gain&#10;- Introduce level-up functionality with increasing XP requirements and overflow handling&#10;- Enhance enemy drops to award XP, supporting player progression&#10;- Improve pickup collision detection for smoother gameplay experience&#10;- Refactor update and draw methods for efficiency and clarity" />
     <MESSAGE value="Implement camera system and adjust enemy spawning&#10;&#10;- Add camera class to follow player movement dynamically&#10;- Modify enemy manager to spawn enemies based on camera view&#10;- Fix enemy update method to correctly use player position tuple&#10;- Ensure enemy drops are correctly offset by camera movement&#10;- Resolve issues with player direction and animation updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement camera system and adjust enemy spawning&#10;&#10;- Add camera class to follow player movement dynamically&#10;- Modify enemy manager to spawn enemies based on camera view&#10;- Fix enemy update method to correctly use player position tuple&#10;- Ensure enemy drops are correctly offset by camera movement&#10;- Resolve issues with player direction and animation updates" />
+    <MESSAGE value="Enhance gameplay and introduce versioning&#10;- Implement attack cooldown for enemies to regulate damage intervals.&#10;- Adjust collision detection to keep enemies on screen during attacks.&#10;- Fix entity rendering with camera offset for consistent visuals.&#10;- Resolve various bugs in entity rendering and update logic.&#10;- Update game version to 0.1.1, marking new features and fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance gameplay and introduce versioning&#10;- Implement attack cooldown for enemies to regulate damage intervals.&#10;- Adjust collision detection to keep enemies on screen during attacks.&#10;- Fix entity rendering with camera offset for consistent visuals.&#10;- Resolve various bugs in entity rendering and update logic.&#10;- Update game version to 0.1.1, marking new features and fixes." />
   </component>
 </project>

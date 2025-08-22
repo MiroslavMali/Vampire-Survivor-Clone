@@ -16,6 +16,9 @@ class SlashAttack(pygame.sprite.Sprite):
         self.current_frame = 0
         self.last_update = pygame.time.get_ticks()
         self.animation_speed = 50  # Milliseconds per frame
+        self.damage = 15  # Slash attack damage
+        # Track enemies hit during the current slash so each is hit once per attack
+        self._hit_targets = set()
 
     def load_frames(self, num_frames, scale):
         frames = []
@@ -35,6 +38,7 @@ class SlashAttack(pygame.sprite.Sprite):
         if not self.active:
             self.active = True
             self.current_frame = 0
+            self._hit_targets.clear()
             # Position the attack based on the parent's facing direction
             self.rect.centerx = self.parent.rect.centerx + (self.offset_x if facing_right else -self.offset_x)
             self.rect.centery = self.parent.rect.centery + self.offset_y
@@ -53,9 +57,16 @@ class SlashAttack(pygame.sprite.Sprite):
                 if self.current_frame >= len(self.frames):
                     self.active = False
                     self.current_frame = 0
+                    self._hit_targets.clear()
                     self.frames = self.load_frames(len(self.frames), self.parent.scale)  # Reset frames to original
                 else:
                     self.image = self.frames[self.current_frame]
+
+    def has_hit(self, enemy) -> bool:
+        return id(enemy) in self._hit_targets
+
+    def mark_hit(self, enemy) -> None:
+        self._hit_targets.add(id(enemy))
 
     def draw(self, surface, offset):
         if self.active:
